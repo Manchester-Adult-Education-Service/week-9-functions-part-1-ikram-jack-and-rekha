@@ -50,15 +50,15 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-def display_header():
-    print("=== LIBRARY BOOK LOAN SYSTEM ===")
-    print("Manchester Central Library")
-def display_menu():
-    print( "1. Record new loan")
-    print("2. View all loans")
-    print("3. Exit")
-display_header()   
-display_menu()
+# def display_header():
+#     print("=== LIBRARY BOOK LOAN SYSTEM ===")
+#     print("Manchester Central Library")
+# def display_menu():
+#     print( "1. Record new loan")
+#     print("2. View all loans")
+#     print("3. Exit")
+# display_header()   
+# display_menu()
 
 
 
@@ -96,12 +96,12 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-def display_loan(title, author, borrower):
-    print("--- Loan Record ---")
-    print(f"title: {title}")
-    print(f"author: {author}")
-    print(f"borrower: {borrower}")
-display_loan("1984", "George Orwell", "Sarah Smith")
+# def display_loan(title, author, borrower):
+#     print("--- Loan Record ---")
+#     print(f"title: {title}")
+#     print(f"author: {author}")
+#     print(f"borrower: {borrower}")
+# display_loan("1984", "George Orwell", "Sarah Smith")
 
 # -------------------------------------------
 # SWAP COMPUTERS
@@ -146,8 +146,32 @@ print("-------------------------------------------\n"
 # Note: Only the DRIVER should be typing!
 # Write your code below:
 
+def get_book_title():               #Function
+    book_title = input("Enter book title: ")
+    return book_title
 
+def get_book_author():
+    book_author = input("Enter book author: ")
+    return book_author
 
+def get_borrower_name():
+    borrower_name = input("Enter borrower name: ")
+    return borrower_name
+
+def create_loan_record(title, author, borrower):
+    loan_record = {
+        "title": title,
+        "author": author,
+        "borrower": borrower
+        }
+    return loan_record
+
+title = get_book_title()
+author = get_book_author()
+borrower = get_borrower_name()
+
+loan = create_loan_record(title, author, borrower)
+print(loan)
 
 # -------------------------------------------
 # SWAP COMPUTERS
