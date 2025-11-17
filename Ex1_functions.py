@@ -59,8 +59,16 @@ print("-------------------------------------------\n"
 #     print("3. Exit")
 # display_header()   
 # display_menu()
-
-
+# Write code below:
+def display_header():
+    print(f"=== LIBRARY BOOK LOAN SYSTEM===")
+    print(f"Manchester Central Library")
+def display_menu():
+    print(f"1. Record new loan")
+    print(f"2. View all loans")
+    print(f"3. Exit")
+display_header()
+display_menu()
 
 
 
