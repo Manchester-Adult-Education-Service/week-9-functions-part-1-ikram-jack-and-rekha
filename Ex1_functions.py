@@ -104,12 +104,13 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-# def display_loan(title, author, borrower):
-#     print("--- Loan Record ---")
-#     print(f"title: {title}")
-#     print(f"author: {author}")
-#     print(f"borrower: {borrower}")
-# display_loan("1984", "George Orwell", "Sarah Smith")
+def display_loan(title, author, borrower):
+      print("--- Loan Record ---")
+      print(f"title: {title}")
+      print(f"author: {author}")
+      print(f"borrower: {borrower}")
+display_loan("1984", "George Orwell", "Sarah Smith")
+
 
 # -------------------------------------------
 # SWAP COMPUTERS
@@ -221,8 +222,27 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+loan_records = []
+def record_new_loan():
+    title = get_book_title()
+    author = get_book_author()
+    borrower = get_borrower_name()
+    loan = create_loan_record(title, author, borrower)
+    loan_records.append(loan)
+    print(f"Loan recorded successfully!")
+    print(f"Total loans recorded: {len(loan_records)}")
+def view_all_loans():
+    print(f"=== ALL LOAN RECORDS ===")
+    if len(loan_records) == 0:
+        print(f"No loans recorded yet.")
+    else:
+        for i in loan_records:
+            display_loan(i["title"], i["author"], i["borrower"])
+        print(f"Total loans: {len(loan_records)}")
 
-
+record_new_loan()
+record_new_loan()
+view_all_loans()
 
 
 # -------------------------------------------
@@ -260,6 +280,15 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+def get_valid_input(prompt):
+   val = ""
+   while val == "":
+       val = input(prompt).strip()
+       if val == "":
+           print(f"This field cannot be blank!") 
+   return val
+
+book_title = get_valid_input("Enter Book Title:")
 
 
 
@@ -297,9 +326,15 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-
-
-
+def search_by_borrower():
+    found_account = 0
+    search = input(f"Enter borrower's name: ").lower()
+    for i in loan_records:
+        if search in i["borrower"].lower():
+            display_loan(i["title"], i["author"], i["borrower"])
+            found_account = found_account + 1
+    print(f"Found {found_account} loan(s)")
+search_by_borrower()
 
 # -------------------------------------------
 # SWAP COMPUTERS
