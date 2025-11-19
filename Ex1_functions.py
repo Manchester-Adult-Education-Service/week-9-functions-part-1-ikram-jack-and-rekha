@@ -50,7 +50,25 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-
+# def display_header():
+#     print("=== LIBRARY BOOK LOAN SYSTEM ===")
+#     print("Manchester Central Library")
+# def display_menu():
+#     print( "1. Record new loan")
+#     print("2. View all loans")
+#     print("3. Exit")
+# display_header()   
+# display_menu()
+# Write code below:
+def display_header():
+    print(f"=== LIBRARY BOOK LOAN SYSTEM===")
+    print(f"Manchester Central Library")
+def display_menu():
+    print(f"1. Record new loan")
+    print(f"2. View all loans")
+    print(f"3. Exit")
+display_header()
+display_menu()
 
 
 
@@ -86,8 +104,12 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-
-
+def display_loan(title, author, borrower):
+      print("--- Loan Record ---")
+      print(f"title: {title}")
+      print(f"author: {author}")
+      print(f"borrower: {borrower}")
+display_loan("1984", "George Orwell", "Sarah Smith")
 
 
 # -------------------------------------------
@@ -133,8 +155,32 @@ print("-------------------------------------------\n"
 # Note: Only the DRIVER should be typing!
 # Write your code below:
 
+def get_book_title():               #Function
+    book_title = input("Enter book title: ")
+    return book_title
 
+def get_book_author():
+    book_author = input("Enter book author: ")
+    return book_author
 
+def get_borrower_name():
+    borrower_name = input("Enter borrower name: ")
+    return borrower_name
+
+def create_loan_record(title, author, borrower):
+    loan_record = {
+        "title": title,
+        "author": author,
+        "borrower": borrower
+        }
+    return loan_record
+
+title = get_book_title()
+author = get_book_author()
+borrower = get_borrower_name()
+
+loan = create_loan_record(title, author, borrower)
+print(loan)
 
 # -------------------------------------------
 # SWAP COMPUTERS
@@ -176,8 +222,27 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+loan_records = []
+def record_new_loan():
+    title = get_book_title()
+    author = get_book_author()
+    borrower = get_borrower_name()
+    loan = create_loan_record(title, author, borrower)
+    loan_records.append(loan)
+    print(f"Loan recorded successfully!")
+    print(f"Total loans recorded: {len(loan_records)}")
+def view_all_loans():
+    print(f"=== ALL LOAN RECORDS ===")
+    if len(loan_records) == 0:
+        print(f"No loans recorded yet.")
+    else:
+        for i in loan_records:
+            display_loan(i["title"], i["author"], i["borrower"])
+        print(f"Total loans: {len(loan_records)}")
 
-
+record_new_loan()
+record_new_loan()
+view_all_loans()
 
 
 # -------------------------------------------
@@ -215,6 +280,15 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+def get_valid_input(prompt):
+   val = ""
+   while val == "":
+       val = input(prompt).strip()
+       if val == "":
+           print(f"This field cannot be blank!") 
+   return val
+
+book_title = get_valid_input("Enter Book Title:")
 
 
 
@@ -252,9 +326,15 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
-
-
-
+def search_by_borrower():
+    found_account = 0
+    search = input(f"Enter borrower's name: ").lower()
+    for i in loan_records:
+        if search in i["borrower"].lower():
+            display_loan(i["title"], i["author"], i["borrower"])
+            found_account = found_account + 1
+    print(f"Found {found_account} loan(s)")
+search_by_borrower()
 
 # -------------------------------------------
 # SWAP COMPUTERS
@@ -294,13 +374,32 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+def get_menu_choice():
+    selection = ""
+    while selection == "":
+        selection = input(f"Choose option (1-3): ")
+        if selection == "1" or selection == "2" or selection == "3":
+            return selection
+        print(f"Invalid choice! Please enter 1, 2, 3.")
+        selection = ""
+def main():
+    display_header()
+    while True: 
+        display_menu()
+        selection = get_menu_choice()
+        if selection == "1":
+            record_new_loan()
+        elif selection == "2":
+            view_all_loans()
+        elif selection == "3":
+            print ("Thank you!")
+            break
+        print("")
 
-
-
-
+main()
 # -------------------------------------------
 # Submitting Your Work
-# -------------------------------------------
+# ------------------------------------------
 # Use Git to:
 # 1. Stage your final changes.
 # 2. Commit with an appropriate message (e.g. "Completed Advanced Activity").
