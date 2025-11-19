@@ -374,13 +374,32 @@ print("-------------------------------------------\n"
 #
 # Note: Only the DRIVER should be typing!
 # Write your code below:
+def get_menu_choice():
+    selection = ""
+    while selection == "":
+        selection = input(f"Choose option (1-3): ")
+        if selection == "1" or selection == "2" or selection == "3":
+            return selection
+        print(f"Invalid choice! Please enter 1, 2, 3.")
+        selection = ""
+def main():
+    display_header()
+    while True: 
+        display_menu()
+        selection = get_menu_choice()
+        if selection == "1":
+            record_new_loan()
+        elif selection == "2":
+            view_all_loans()
+        elif selection == "3":
+            print ("Thank you!")
+            break
+        print("")
 
-
-
-
+main()
 # -------------------------------------------
 # Submitting Your Work
-# -------------------------------------------
+# ------------------------------------------
 # Use Git to:
 # 1. Stage your final changes.
 # 2. Commit with an appropriate message (e.g. "Completed Advanced Activity").
